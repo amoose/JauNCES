@@ -1,0 +1,2 @@
+Fabricator(:school) do
+end

@@ -5,6 +5,7 @@ html
       title= content_for?(:title) ? yield(:title) : "Nces Lookup"
       meta content=(content_for?(:description) ? yield(:description) : "Nces Lookup") name="description" 
         = stylesheet_link_tag "application", :media => "all"
+        = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Scada:400,700|Cardo:400,700", :
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)
