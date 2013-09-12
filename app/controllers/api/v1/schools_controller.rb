@@ -2,12 +2,12 @@ class Api::V1::SchoolsController < ApplicationController
 	before_filter :allow_cross_origin
 
 	def index
-		@schools = School.all
+		@schools = School.limit(20)
 		render :json => @schools
 	end
 
 	def search
-		@schools = []
+		@schools = School.any_of(School.generate_search_params(params))
 		render :json => @schools
 	end
 
