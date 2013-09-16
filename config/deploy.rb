@@ -16,6 +16,8 @@ set :shared_path, "/var/www/#{application}-shared"
 
 set :deploy_to, "/var/www/#{application}"
 
+set :deploy_via, :copy
+
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
