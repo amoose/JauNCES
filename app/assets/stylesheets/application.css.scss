@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -24,4 +25,37 @@
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
   font-family: 'Scada', sans-serif;
 	// font-family: 'Cardo', serif;
+}
+h1, h2, h3, h4, h5, .brand {
+	font-family: 'Cardo', serif !important;
+}
+.content, .tagline {
+	font-family: 'Scada', sans-serif !important;
+}
+
+h1 { font-size: 2.6em; }
+h2 { font-size: 2.2em; }
+
+.tagline {
+	text-decoration: italic;
+	float: right;
+	display: block;
+	padding: 10px 20px 10px;
+	margin-right: -20px;
+	color: #c9c9c9;
+	// text-shadow: #454545 1px 1px 2px;
+}
+
+
+.center {
+	margin: 0 auto !important;
+	float: none !important;
+}
+
+.main-search {
+	text-align: center;
+	padding: 30px 0;
+	.search-query {
+		
+	}
 }

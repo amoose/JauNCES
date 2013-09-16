@@ -1,0 +1,16 @@
+/ = debug @schools
+.row
+	.span6.center.main-search
+		= render 'layouts/search'
+.row
+	.span8
+		h1
+		- if @schools.any?
+			h2
+				| Nearest Schools:
+				- @schools.each do |school|
+					= render :partial => 'school', :object => school
+		- else
+			h2
+				| No schools found near #{@request_city}
+

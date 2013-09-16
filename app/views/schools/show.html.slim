@@ -1,0 +1,34 @@
+.row
+	.span8
+		h1= @school.name
+
+		table.table
+			tr
+				th
+					| NCES School ID
+				th
+					| Low Grade
+				th
+					| High Grade
+				th
+					| District
+				th
+					| Address
+				th
+					| Phone
+				th
+					| Students
+				th
+					| Teachers
+			tr
+				td= @school.nces_school_id
+				td= @school.low_grade
+				td= @school.high_grade
+				td= @school.district
+				td= @school.address
+				td= @school.phone
+				td= @school.students
+				td= @school.teachers
+
+	.span4
+		= render "layouts/search"
