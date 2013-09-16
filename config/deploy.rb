@@ -1,22 +1,25 @@
+require 'capistrano/ext/multistage'
+
 set :stages, %w(production)
 set :default_stage, "production"
-require 'capistrano/ext/multistage'
 set :application, "jaunces"
-set :repository, "git@github.com:GSA-OCSIT/jaunces.git"
+set :repository, "git@github.com:infamousamos/jaunces.git"
 set :scm, :git
 set :use_sudo, true
 set :user, 'ubuntu'
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
-set :rvm_ruby_string, 'ruby-2.0.0-p247'
+set :rvm_ruby_string, 'ruby-2.0.0-p247@nces-lookup'
 set :git_shallow_clone, 1
 set :keep_releases, 5
 
-set :shared_path, "/var/www/#{application}-shared"
+set :shared_path, "/var/www/shared"
+
+set :rvm_type, :user
 
 set :deploy_to, "/var/www/#{application}"
 
-set :deploy_via, :copy
+# set :deploy_via, :copy
 
 namespace :deploy do
   task :start do ; end
@@ -27,7 +30,7 @@ namespace :deploy do
 
   desc "copies shared config to app config"
 	task :symlink_config do
-		run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+		# run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 	end
 
 	desc "creates asset dirs"
@@ -38,8 +41,15 @@ namespace :deploy do
 	end
 end
 
+namespace :rvm do
+  task :trust_rvmrc do
+    run "rvm rvmrc trust #{release_path}"
+  end
+end
+
 
 
 before "deploy:finalize_update", "deploy:create_asset_dirs"
 after "deploy:finalize_update", "deploy:symlink_config"
 after "deploy:finalize_update", "deploy:cleanup"
+after "deploy", "rvm:trust_rvmrc"
