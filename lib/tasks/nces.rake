@@ -1,6 +1,6 @@
 require "#{Rails.root}/app/helpers/application_helper"
 include ApplicationHelper
-
+require "pp"
 
 def create_school(row_data)
 	School.create(

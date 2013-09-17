@@ -30,7 +30,6 @@ namespace :deploy do
 
   desc "copies shared config to app config"
 	task :symlink_config do
-		# run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 		run "ln -nfs #{shared_path}/config/redis/#{rails_env}.conf #{release_path}/config/redis/#{rails_env}.conf"
 		run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/mongoid.yml"
 	end
@@ -42,6 +41,10 @@ namespace :deploy do
 		run "mkdir -p #{release_path}/public/javascripts"
 	end
 
+	desc "precompiles assets"
+	task :precompile_assets do
+		run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile"
+	end
 end
 
 namespace :rvm do
@@ -55,3 +58,4 @@ end
 before "deploy:finalize_update", "deploy:create_asset_dirs"
 after "deploy:finalize_update", "deploy:symlink_config"
 after "deploy:finalize_update", "deploy:cleanup"
+after "deploy:finalize_update", "deploy:precompile_assets"
