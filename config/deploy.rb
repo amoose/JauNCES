@@ -43,7 +43,7 @@ namespace :deploy do
 
 	desc "precompiles assets"
 	task :precompile_assets do
-		run "RAILS_ENV=#{rails_env} cd #{current_path} && bundle exec rake assets:precompile"
+		run "RAILS_ENV=#{rails_env} cd #{current_path} && rake assets:precompile"
 	end
 end
 
@@ -56,6 +56,7 @@ end
 
 
 before "deploy:finalize_update", "deploy:create_asset_dirs"
+after "deploy:finalize_update", "deploy:precompile_assets"
 after "deploy:finalize_update", "deploy:symlink_config"
 after "deploy:finalize_update", "deploy:cleanup"
-after "deploy:finalize_update", "deploy:precompile_assets"
+
