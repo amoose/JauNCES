@@ -52,4 +52,4 @@ end
 before "deploy:finalize_update", "deploy:create_asset_dirs"
 after "deploy:finalize_update", "deploy:symlink_config"
 after "deploy:finalize_update", "deploy:cleanup"
-after "deploy", "rvm:trust_rvmrc"
+# after "deploy", "rvm:trust_rvmrc"

@@ -44,7 +44,8 @@ group :development, :test do
 end
 
 group :production do
-  # gem 'unicorn'
+  gem 'redis-store'
+  gem 'redis-rails'
 end
 
 group :test do
