@@ -54,7 +54,7 @@ class School
   end
 
   def self.generate_search_params(params)
-    if params[:name].is_number? and params[:name].length == 5
+    if params[:name] and params[:name].is_number? and params[:name].length == 5
       params[:zip] = params[:name].to_i 
       params.delete(:name)
     end

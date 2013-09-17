@@ -31,7 +31,8 @@ namespace :deploy do
   desc "copies shared config to app config"
 	task :symlink_config do
 		# run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-		run "ln -nfs #{shared_path}/config/redis/#{Rails.env}.conf #{release_path}/config/redis/#{Rails.env}.conf"
+		run "ln -nfs #{shared_path}/config/redis/#{rails_env}.conf #{release_path}/config/redis/#{rails_env}.conf"
+		run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/mongoid.yml"
 	end
 
 	desc "creates asset dirs"
