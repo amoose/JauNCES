@@ -43,7 +43,7 @@ namespace :deploy do
 
 	desc "precompiles assets"
 	task :precompile_assets do
-		run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile"
+		run "RAILS_ENV=#{rails_env} cd #{current_path} && bundle exec rake assets:precompile"
 	end
 end
 
