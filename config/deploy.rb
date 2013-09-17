@@ -1,4 +1,5 @@
 require 'capistrano/ext/multistage'
+require "rvm/capistrano"
 
 set :stages, %w(production)
 set :default_stage, "production"
