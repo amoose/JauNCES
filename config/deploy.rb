@@ -31,6 +31,7 @@ namespace :deploy do
   desc "copies shared config to app config"
 	task :symlink_config do
 		# run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+		run "ln -nfs #{shared_path}/config/redis/#{Rails.env}.conf #{release_path}/config/redis/#{Rails.env}.conf"
 	end
 
 	desc "creates asset dirs"
@@ -39,6 +40,7 @@ namespace :deploy do
 		run "mkdir -p #{release_path}/public/stylesheets"
 		run "mkdir -p #{release_path}/public/javascripts"
 	end
+
 end
 
 namespace :rvm do
@@ -52,4 +54,3 @@ end
 before "deploy:finalize_update", "deploy:create_asset_dirs"
 after "deploy:finalize_update", "deploy:symlink_config"
 after "deploy:finalize_update", "deploy:cleanup"
-# after "deploy", "rvm:trust_rvmrc"
