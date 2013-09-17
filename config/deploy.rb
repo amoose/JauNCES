@@ -57,7 +57,8 @@ end
 
 
 before "deploy:finalize_update", "deploy:create_asset_dirs"
+before "deploy:finalize_update", "deploy:symlink_config"
 after "deploy:finalize_update", "deploy:precompile_assets"
-after "deploy:finalize_update", "deploy:symlink_config"
 after "deploy:finalize_update", "deploy:cleanup"
+
 

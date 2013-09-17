@@ -33,6 +33,7 @@ group :development do
   gem 'html2haml'
   gem 'hub', :require=>nil
   gem 'quiet_assets'
+  gem 'rvm-capistrano'
 end
 
 group :development, :test do
