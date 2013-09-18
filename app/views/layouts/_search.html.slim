@@ -1,4 +1,11 @@
-form action="/search" method="GET" class="form-search"
-	input type="text" class="input-medium search-query input-xlarge" placeholder="Enter terms to search or a zip code" name="name" value="#{params[:name]}"
-	button type="submit" class="btn btn-primary"
-		| Search
+div.search
+	h2
+		| Search for a school
+
+	form action="/search" method="GET" class="form-search"
+		input type="text" class="input-medium search-query input-xlarge" placeholder="Enter terms to search or a zip code" name="name" value="#{params[:name] || params[:zip]}"
+		button type="submit" class="btn btn-primary"
+			| Search
+
+	p
+		| Search by school name or zip
