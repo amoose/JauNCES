@@ -47,6 +47,16 @@ namespace :deploy do
 	task :precompile_assets do
 		run "RAILS_ENV=#{rails_env} cd #{current_path} && rake assets:precompile"
 	end
+
+	desc "runs bundle"
+	task :bundle do
+		run "RAILS_ENV=#{rails_env} cd #{current_path} && bundle"
+	end
+
+	desc "kills redis"
+	task :kill_redis do
+		run "kill $(ps aux | grep 'redis-server' | awk '{print $2}')"
+	end
 end
 
 namespace :rvm do
@@ -56,10 +66,12 @@ namespace :rvm do
 end
 
 
-
+after "deploy:start", "deploy:kill_redis"
 before "deploy:finalize_update", "deploy:create_asset_dirs"
 before "deploy:finalize_update", "deploy:symlink_config"
-# after "deploy:finalize_update", "deploy:precompile_assets"
+before "deploy:finalize_update", "deploy:bundle"
+after "deploy:finalize_update", "deploy:precompile_assets"
 after "deploy:finalize_update", "deploy:cleanup"
+
 
 
