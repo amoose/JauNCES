@@ -3,8 +3,12 @@ class HomeController < ApplicationController
 	def index
 		logger.info @request_city
 		logger.info "---"
-		logger.info request
-		@schools = School.near(@request_city).limit(10)
+		logger.info request.inspect
+		begin
+			@schools = School.near(@request_city).limit(10)
+		rescue
+			@schools = []
+		end
 	end
 
 	def search
