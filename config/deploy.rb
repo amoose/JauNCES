@@ -50,12 +50,13 @@ namespace :deploy do
 
 	desc "runs bundle"
 	task :bundle do
-		run "cd #{release_path}; RAILS_ENV=#{rails_env} bundle"
+		run "cd #{release_path}; RAILS_ENV=#{rails_env} bundle exec bundle install"
 	end
 
 	desc "kills redis"
-	task :kill_redis do
-		run "sudo kill $(ps aux | grep 'redis-server' | awk '{print $2}')"
+	task :kill_redis, :on_error => :continue do
+		begin
+			run "sudo kill $(ps aux | grep 'redis-server' | awk '{print $2}')"
 	end
 end
 

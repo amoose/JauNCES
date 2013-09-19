@@ -68,7 +68,7 @@ namespace :nces do
 						nil,
 						nil,
 						nil,
-						row[298][1,2]
+						[row[298][1].to_f,row[298][2].to_f]
 					])
 				pp schoo.inspect
 			end
