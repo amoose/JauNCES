@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
 
 	def index
-		logger.info @request_city
-		logger.info "---"
-		logger.info request.inspect
 		begin
 			@schools = School.near(@request_city).limit(10)
 		rescue
