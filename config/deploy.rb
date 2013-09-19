@@ -55,8 +55,7 @@ namespace :deploy do
 
 	desc "kills redis"
 	task :kill_redis, :on_error => :continue do
-		begin
-			run "sudo kill $(ps aux | grep 'redis-server' | awk '{print $2}')"
+		run "sudo kill $(ps aux | grep 'redis-server' | awk '{print $2}')"
 	end
 end
 
