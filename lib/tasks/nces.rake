@@ -39,7 +39,7 @@ namespace :nces do
 		desc "Imports NCES data via NCES_IMPORT_API"
 		task :api => :environment do
 			pp "Fetching entries via API: #{ENV['NCES_IMPORT_API']}"
-			response = HTTParty.get(ENV['NCES_IMPORT_API'])
+			response = HTTParty.get(ENV['NCES_IMPORT_API'], :timeout => 120000)
 			json = JSON.parse(response.body)
 			pp "Fetched #{json["data"].size} entries via API. Inserting..."
 			json['data'].each do |row|
