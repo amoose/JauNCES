@@ -6,7 +6,7 @@ port = /port.(\d+)/.match(redis_conf)[1]
 `redis-server #{conf_file}`
 res = `ps aux | grep redis-server`
 
-unless res.include?("redis-server") && res.include?("#{Rails.env}.conf")
+unless res.include?("redis-server") && res.include?(port)
   raise "Couldn't start redis"
 end
 

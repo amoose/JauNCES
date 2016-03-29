@@ -4,13 +4,13 @@ require "rvm/capistrano"
 set :stages, %w(production)
 set :default_stage, "production"
 set :application, "jaunces"
-set :repository, "git@github.com:infamousamos/jaunces.git"
+set :repository, "git@github.com:amoose/jaunces.git"
 set :scm, :git
-set :use_sudo, true
+# set :use_sudo, true
 set :user, 'ubuntu'
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
-set :rvm_ruby_string, 'ruby-2.0.0-p247@nces-lookup'
+set :rvm_ruby_string, '2.2.3'
 set :git_shallow_clone, 1
 set :keep_releases, 5
 

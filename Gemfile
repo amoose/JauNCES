@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
-gem 'rails', '4.0.0'
+gem 'rails', '~> 4.2'
 
-gem 'mongoid', '~> 4', :github=>'mongoid/mongoid'   # must be listed before geocoder
-
-gem 'bootstrap-sass'
+gem 'mongoid', github: 'mongoid/mongoid' # must be listed before geocoder
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'sass-rails', '>= 3.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'figaro'
 gem 'geocoder'
@@ -16,7 +16,6 @@ gem 'json'
 gem 'redis'
 gem 'resque', '~> 2.0.0.pre.1', github: 'resque/resque'
 gem 'roo'
-gem 'sass-rails', '~> 4.0.0'
 gem 'simple_form', '>= 3.0.0.rc'
 gem 'slim'
 gem 'turbolinks'
