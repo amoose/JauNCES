@@ -82,8 +82,8 @@ namespace :nces do
 			  rows = 0
 			  # [TODO] determine header row
 			  # [TODO] create map of fields and data types
-			  # 8.upto(book.last_row) do |row|
-			  8.upto(10) do |row|
+			  8.upto(book.last_row) do |row|
+			  # 8.upto(10) do |row|
 			  	row_data = []
 			  	book.first_column.upto(book.last_column) do |col|
 			  		begin

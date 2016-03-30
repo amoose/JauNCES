@@ -21,18 +21,24 @@ gem 'slim'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'zip'
+gem 'rake', '~> 10'
 
 group :development do
   # this has dependency conflicts with pry/pry-nav
   # gem 'better_errors' 
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
-  gem 'capistrano-rails'
+  # gem 'capistrano', '~> 3.1'
+  # gem 'capistrano-rails', '~> 1.1'
   gem 'haml-rails'
   gem 'haml2slim'
   gem 'html2haml'
   gem 'hub', :require=>nil
   gem 'quiet_assets'
-  gem 'rvm-capistrano'
+  # gem 'rvm-capistrano'
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rvm'
 end
 
 group :development, :test do
