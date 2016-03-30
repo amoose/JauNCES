@@ -22,8 +22,6 @@ class School
   field :locale
   field :charter, :type => Boolean
   field :magnet, :type => Boolean
-  field :title_i, :type => Boolean
-  field :title_i_wide, :type => Boolean
   field :students, :type => Integer
   field :teachers, :type => BigDecimal
   field :st_ratio, :type => Float

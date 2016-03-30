@@ -23,13 +23,12 @@ def create_school(row_data)
 		:locale => row_data[16],
 		:charter => booleanize(row_data[17]),
 		:magnet => booleanize(row_data[18]),
-		:title_i => booleanize(row_data[19]),
-		:title_i_wide => booleanize(row_data[20]),
-		:students => row_data[21].to_i,
-		:teachers => row_data[22].to_f,
-		:st_ratio => row_data[23].to_f,
-		:free_lunch => row_data[24].to_i,
-		:reduced_lunch => row_data[25].to_i
+		:students => row_data[19].to_i,
+		:teachers => row_data[20].to_f,
+		:st_ratio => row_data[21].to_f,
+		:free_lunch => row_data[22].to_i,
+		:reduced_lunch => row_data[23].to_i,
+		:coordinates =>row_data[24]
 	) unless row_data.empty?
 end
 
@@ -40,11 +39,10 @@ namespace :nces do
 		desc "Imports NCES data via NCES_IMPORT_API"
 		task :api => :environment do
 			pp "Fetching entries via API: #{ENV['NCES_IMPORT_API']}"
-			response = HTTParty.get(ENV['NCES_IMPORT_API'])
+			response = HTTParty.get(ENV['NCES_IMPORT_API'], :timeout => 120000)
 			json = JSON.parse(response.body)
 			pp "Fetched #{json["data"].size} entries via API. Inserting..."
 			json['data'].each do |row|
-				
 				schoo = create_school([
 						row[8],
 						row[12],
@@ -70,7 +68,7 @@ namespace :nces do
 						nil,
 						nil,
 						nil,
-						nil
+						[row[298][2].to_f,row[298][1].to_f]
 					])
 				pp schoo.inspect
 			end
