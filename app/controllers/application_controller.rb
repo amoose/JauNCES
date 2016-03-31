@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter :default_request_city
 
   def default_request_city
-  	@request_city = request.location.city.blank? ? "Washington, DC" : "#{request.location.data['city']}, #{request.location.data['region_code']}, #{request.location.data['country_code']}"
+    begin
+  	 @request_city = request.location.city.blank? ?
+      "Washington, DC" : "#{request.location.data['city']}, #{request.location.data['region_code']}, #{request.location.data['country_code']}"
+    rescue
+      @request_city = "Washington, DC"
+    end
   end
 end

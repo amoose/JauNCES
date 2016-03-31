@@ -2,7 +2,9 @@ class HomeController < ApplicationController
 
 	def index
 		begin
-			@schools = School.near(@request_city).limit(10)
+			location = Geocoder::Query.new(@request_city)
+			result = location.execute.first
+			@schools ||= School.near(result).limit(10)
 		rescue
 			@schools = []
 		end

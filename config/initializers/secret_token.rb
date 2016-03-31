@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-NcesLookup::Application.config.secret_key_base = '6d216d0f18949bb462235fc337739808100cbfd40e8de39c6c04e6f313d54239e0f454bd030e4a3f993af28d779ab732a89ba8ceb1299e0bc7a1db8aec8c065c'
+NcesLookup::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']

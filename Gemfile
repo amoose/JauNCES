@@ -3,7 +3,7 @@ ruby '2.2.3'
 
 gem 'rails', '~> 4.2'
 
-gem 'mongoid', github: 'mongoid/mongoid' # must be listed before geocoder
+gem 'mongoid', github: 'mongodb/mongoid', tag: 'v5.1.1' # must be listed before geocoder
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'sass-rails', '>= 3.2'
 gem 'coffee-rails', '~> 4.0.0'
