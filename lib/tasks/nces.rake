@@ -1,8 +1,7 @@
 require "#{Rails.root}/app/helpers/application_helper"
 include ApplicationHelper
-require "pp"
 
-def create_school(row_data)
+def create_school(row_data, rows)
 	School.create(
 		:nces_school_id => row_data[0],
 		:state_school_id => row_data[1],
@@ -38,10 +37,10 @@ namespace :nces do
 	namespace :import do
 		desc "Imports NCES data via NCES_IMPORT_API"
 		task :api => :environment do
-			pp "Fetching entries via API: #{ENV['NCES_IMPORT_API']}"
+			puts "Fetching entries via API: #{ENV['NCES_IMPORT_API']}"
 			response = HTTParty.get(ENV['NCES_IMPORT_API'], :timeout => 120000)
 			json = JSON.parse(response.body)
-			pp "Fetched #{json["data"].size} entries via API. Inserting..."
+			puts "Fetched #{json["data"].size} entries via API. Inserting..."
 			json['data'].each do |row|
 				schoo = create_school([
 						row[8],
@@ -68,9 +67,9 @@ namespace :nces do
 						nil,
 						nil,
 						nil,
-						[row[298][2].to_f,row[298][1].to_f]
+						%W[ row[298][2].to_f row[298][1].to_f ]
 					])
-				pp schoo.inspect
+				puts schoo.inspect
 			end
 		end
 
@@ -93,7 +92,7 @@ namespace :nces do
 			  			puts ">> An error occurred preparing data from row #: #{row}"
 			  		end
 			  	end
-			  	create_school(row_data)
+			  	create_school(row_data, rows)
 			  	rows = rows+1
 			  end
 

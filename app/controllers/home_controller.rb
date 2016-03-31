@@ -1,10 +1,13 @@
 class HomeController < ApplicationController
 
 	def index
+		Geocoder.config(
+				:lookup => :bing,
+		  	:api_key => ENV['BING_API_KEY'],
+		  	:use_https => true,
+			)
 		begin
-			location = Geocoder::Query.new(@request_city)
-			result = location.execute.first
-			@schools ||= School.near(result).limit(10)
+			@schools ||= School.near(@request_location).limit(10)
 		rescue
 			@schools = []
 		end

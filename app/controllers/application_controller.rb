@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
   def default_request_city
     begin
-  	 @request_city = request.location.city.blank? ?
-      "Washington, DC" : "#{request.location.data['city']}, #{request.location.data['region_code']}, #{request.location.data['country_code']}"
+      query = Geocoder::Query.new("#{request.latitude}, #{request.longitude}")
+      @request_location = query.execute.first
     rescue
       @request_city = "Washington, DC"
     end

@@ -51,7 +51,7 @@ namespace :deploy do
       within release_path do
         with rails_env: fetch(:rails_env) do
           # execute :bundle, :exec, :thin, "restart -C config/thin.yml"
-          run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+          execute "touch #{File.join(current_path,'tmp','restart.txt')}"
         end
       end
     end

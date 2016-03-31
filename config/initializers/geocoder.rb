@@ -2,9 +2,8 @@ redis_conf = File.read(Rails.root.join("config/redis", "#{Rails.env}.conf"))
 port = /port.(\d+)/.match(redis_conf)[1]
 
 Geocoder.configure(
-  :lookup => :bing,
-  :api_key => ENV['BING_API_KEY'],
-  :use_https => true,
+  :ip_lookup => :freegeoip,
+  freegeoip: { host: 'localhost:8080' },
 
   # geocoding service request timeout, in seconds (default 3):
   :timeout => 2,
