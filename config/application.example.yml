@@ -6,9 +6,9 @@
 # GMAIL_USERNAME: Your_Gmail_Username
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 # Add application configuration variables here, as shown below.
-#
+SECRET_KEY_BASE: run `rake secret` in the application root
+BING_API_KEY: Get your own key at https://www.bingmapsportal.com
+
+# not used
 GMAIL_USERNAME: Your_Username
 GMAIL_PASSWORD: Your_Password
-ADMIN_NAME: First User
-ADMIN_EMAIL: user@example.com
-ADMIN_PASSWORD: changeme
