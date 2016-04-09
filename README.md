@@ -12,11 +12,25 @@ The national school identifier knows as *NCES School ID* is becoming more widely
 > annual basis. Search engines and users alike need the
 > ability to find NCES data on schools quickly and easily.
 
+## Getting Started
+
+#### Dependencies
+- Ruby 2.0+ (try rbenv or rvm)
+- Bundler (`gem install bundler`)
+- Vagrant
+- Virtualbox or VMware Fusion
+
+#### Vagrant up!
+- Start the virtual machine with `vagrant up`. Your virtual machine will be downloaded and provisioned automatically.
+
 
 ## The Plan
-  - Create automated Resque tasks for fetching data from ed.gov
+  - Create automated background tasks for fetching data from ed.gov
   - Find other useful NCES data to include
   - Improve test coverage
+
+## History
+This application is loosely based upon the _recipe_ used for [resapi.org](http://resapi.org). This _recipe_ includes a lightweight Rails application which accepts various data types as source for RESTful APIs. These APIs are self-documenting and schema-agnostic. For more information see [resapi.org](http://resapi.org).
   
 
 ## Contributing
