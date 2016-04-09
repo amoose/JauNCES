@@ -21,7 +21,9 @@ The national school identifier knows as *NCES School ID* is becoming more widely
 - Virtualbox or VMware Fusion
 
 #### Vagrant up!
-- Start the virtual machine with `vagrant up`. Your virtual machine will be downloaded and provisioned automatically.
+- Start the virtual machine with `vagrant up`. Your virtual machine will be downloaded and provisioned automatically. 
+- Once the virtual machine is fully provisioned, the script will then import Schools from the sample data set and then index the data for quick searching.
+- Look for the `ALL DONE!!!` and visit http://localhost:3000
 
 
 ## The Plan

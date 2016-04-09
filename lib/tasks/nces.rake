@@ -27,7 +27,7 @@ def create_school(row_data, _rows)
     st_ratio: row_data[21].to_f,
     free_lunch: row_data[22].to_i,
     reduced_lunch: row_data[23].to_i,
-    coordinates: row_data[24]
+    coordinates: [row_data[24], row_data[25]]
   ) unless row_data.empty?
 end
 

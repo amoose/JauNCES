@@ -1,4 +1,3 @@
-/ = debug @schools
 .row
 	.span6.center.main-search
 		= render 'layouts/search'
@@ -6,8 +5,7 @@
 	.span8
 		h1
 		- if @schools.any?
-			h2
-				| Nearby schools:
+			h2= "Nearby (#{@request_location.to_s})schools:"
 			- @schools.each do |school|
 				= render :partial => 'school', :object => school
 		- else

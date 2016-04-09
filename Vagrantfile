@@ -54,6 +54,19 @@ sudo apt-get update
 sudo apt-get install docker.io -y
 docker run --net=host --restart=always -d fiorix/freegeoip
 curl localhost:8080/json/1.2.3.4
+echo freegeoip server up and running!
+echo "=========================================="
+
+echo Importing Schools from sample data...
+cd /vagrant/JauNCES
+NCES_IMPORT_DIR=/vagrant/JauNCES/lib/tasks/nces-data rake nces:import:csv
+echo "=========================================="
+
+echo Creating database indexes for searchability...
+rake db:mongoid:create_indexes
+echo "=========================================="
+
+echo "ALL DONE!!!"
 SCRIPT
 
   config.vm.provision 'shell', inline: $script
