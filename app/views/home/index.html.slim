@@ -5,7 +5,7 @@
 	.span8
 		h1
 		- if @schools.any?
-			h2= "Nearby (#{@request_location.to_s})schools:"
+			h2= "Nearby (#{@request_location || "unknown location"}) schools:"
 			- @schools.each do |school|
 				= render :partial => 'school', :object => school
 		- else
