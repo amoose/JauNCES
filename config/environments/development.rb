@@ -19,22 +19,20 @@ NcesLookup::Application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
-
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: 'smtp.gmail.com',
     port: 587,
-    domain: ENV["DOMAIN_NAME"],
-    authentication: "plain",
+    domain: ENV['DOMAIN_NAME'],
+    authentication: 'plain',
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['GMAIL_PASSWORD']
   }
   # Send email in development mode.
   config.action_mailer.perform_deliveries = true
-
 end

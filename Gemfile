@@ -26,13 +26,13 @@ gem 'rake', '~> 10'
 group :development do
   # this has dependency conflicts with pry/pry-nav
   # gem 'better_errors' 
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
   # gem 'capistrano', '~> 3.1'
   # gem 'capistrano-rails', '~> 1.1'
   gem 'haml-rails'
   gem 'haml2slim'
   gem 'html2haml'
-  gem 'hub', :require=>nil
+  gem 'hub', require: nil
   gem 'quiet_assets'
   # gem 'rvm-capistrano'
   gem 'capistrano', '~> 3.1'
@@ -59,5 +59,5 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
-  gem 'mongoid-rspec', '>= 1.6.0', :github=>"evansagge/mongoid-rspec"
+  gem 'mongoid-rspec', '>= 1.6.0', github: 'evansagge/mongoid-rspec'
 end

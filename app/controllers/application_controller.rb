@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter :default_request_city
 
   def default_request_city
-    begin
-      query = Geocoder::Query.new("#{request.latitude}, #{request.longitude}")
-      @request_location = query.execute.first
-    rescue
-      @request_city = "Washington, DC"
-    end
+    
+    query = Geocoder::Query.new("#{request.latitude}, #{request.longitude}")
+    @request_location = query.execute.first
+  rescue
+    @request_city = 'Washington, DC'
+    
   end
 end

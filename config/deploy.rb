@@ -23,10 +23,10 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/mongoid.yml config/application.yml config/redis/production.conf}
+set :linked_files, %w(config/mongoid.yml config/application.yml config/redis/production.conf)
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
+set :linked_dirs, %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets)
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -44,14 +44,13 @@ set :rvm_ruby_version, '2.2.3'      # Defaults to: 'default'
 # set :rvm_custom_path, '~/.myveryownrvm'  # only needed if not detected
 
 namespace :deploy do
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
         with rails_env: fetch(:rails_env) do
           # execute :bundle, :exec, :thin, "restart -C config/thin.yml"
-          execute "touch #{File.join(current_path,'tmp','restart.txt')}"
+          execute "touch #{File.join(current_path, 'tmp', 'restart.txt')}"
         end
       end
     end
@@ -67,12 +66,7 @@ namespace :deploy do
   end
 end
 
-
 after 'deploy:publishing', 'deploy:restart'
-
-
-
-
 
 # set :stages, %w(production)
 # set :default_stage, "production"
@@ -125,11 +119,7 @@ after 'deploy:publishing', 'deploy:restart'
 #   end
 # end
 
-
-
 # before "deploy:finalize_update", "deploy:create_asset_dirs"
 # before "deploy:finalize_update", "deploy:symlink_config"
 # after "deploy:finalize_update", "deploy:precompile_assets"
 # after "deploy:finalize_update", "deploy:cleanup"
-
-
