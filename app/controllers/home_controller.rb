@@ -14,6 +14,8 @@ class HomeController < ApplicationController
   end
 
   def search
-    @schools = School.any_of(School.generate_search_params(params)).limit(20)
+    skewl_params = School.generate_search_params(params)
+    puts skewl_params
+    @schools = School.any_of(skewl_params).limit(20)
   end
 end

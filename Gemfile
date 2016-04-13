@@ -41,6 +41,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
   gem 'rubocop'
+  gem 'go_script'
 end
 
 group :development, :test do

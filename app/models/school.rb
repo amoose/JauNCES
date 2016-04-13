@@ -27,7 +27,6 @@ class School
   field :st_ratio, type: Float
   field :free_lunch, type: Integer
   field :reduced_lunch, type: Integer
-
   field :coordinates, type: Array
 
   include Geocoder::Model::Mongoid
@@ -53,14 +52,22 @@ class School
 
   def self.generate_search_params(params)
     if params[:query] && params[:query].is_number? && params[:query].length == 5
-      params[:zip] = params[:query].to_i 
-      params.delete(:name)
+      # params[:zip] = 
+      # params.delete(:query)
+      return { zip: params[:query].to_i  }
     end
-    valid_params = params.keys.collect(&:to_sym) & VALID_SEARCH_PARAMS
-    query_params = {}
-    valid_params.each { |p| query_params[p.to_sym] = params[p] }
+
+    valid_params = {}
+    # VALID_SEARCH_PARAMS.each do |p|
+    #   valid_params[p.to_sym] = /.*#{params[:query].upcase}.*/
+    # end
+
+    # valid_params = params.keys.collect(&:to_sym) & VALID_SEARCH_PARAMS
+    # query_params = {}
+    # valid_params.each { |p| query_params[p.to_sym] = params[p] }
     # [TODO] update method for string search on name from matching against only uppercase
-    query_params[:query] = /.*#{query_params[:query].upcase}.*/ if query_params[:query]
-    query_params
+    valid_params[:name] = /.*#{params[:query].upcase}.*/ if params[:query]
+    # query_params
+    valid_params
   end
 end

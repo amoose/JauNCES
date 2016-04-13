@@ -8,8 +8,10 @@
     h1
     - if @schools.any?
       h2 Search Results
-      - @schools.each do |school|
-        = render :partial => 'school', :object => school
+      ul
+        - @schools.each do |school|
+          li
+            = render :partial => 'school', :object => school
     - else
       h2= "No schools found matching #{params[:query]}"
 

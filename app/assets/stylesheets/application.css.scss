@@ -90,12 +90,10 @@ h2 { font-size: 2.2em; }
   }
 }
 footer {
+  margin-top: 2.0em;
   border-top: 1px solid #cecece;
 }
 
-.search-results .search .search-query {
-  width: 200px;
-}
 
 // hack override ew
 @media screen and (min-width: 600px) {
