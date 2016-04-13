@@ -22,6 +22,7 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'zip'
 gem 'rake', '~> 10'
+gem 'us_web_design_standards'
 
 group :development do
   # this has dependency conflicts with pry/pry-nav

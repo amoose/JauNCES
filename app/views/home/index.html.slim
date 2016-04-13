@@ -1,14 +1,20 @@
 .row
-	.span6.center.main-search
-		= render 'layouts/search'
+  .main-search
+    = render 'layouts/search'
+  / br
+  / a href="#" class="trigger-geolocate"
+  /   h3 Find schools near my current location
+
 .row
-	.span8
-		h1
-		- if @schools.any?
-			h2= "Nearby (#{@request_location || "unknown location"}) schools:"
-			- @schools.each do |school|
-				= render :partial => 'school', :object => school
-		- else
-			h2
-				| No schools found near #{@request_city}
+  .col-xs-8
+    h1
+    - if @schools.any?
+      h2= "Nearby (#{@request_location || "unknown location"}) schools:"
+      ul
+        - @schools.each do |school|
+          li
+            = render :partial => 'school', :object => school
+    - else
+      h2
+        | No schools found near #{@request_city}
 

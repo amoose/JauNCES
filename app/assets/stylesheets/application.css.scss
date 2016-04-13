@@ -1,4 +1,3 @@
-
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require us_web_design_standards
+ *= require us_web_design_standards_fonts
  *= require_tree .
 */
 
@@ -30,43 +31,75 @@ body {
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  font-family: 'Scada', sans-serif;
-	// font-family: 'Cardo', serif;
+  // font-family: 'Scada', sans-serif;
+  // font-family: 'Cardo', serif;
 }
 h1, h2, h3, h4, h5, .brand {
-	font-family: 'Cardo', serif !important;
+  // font-family: 'Cardo', serif !important;
 }
 .content, .tagline {
-	font-family: 'Scada', sans-serif !important;
+  // font-family: 'Scada', sans-serif !important;
 }
 
 h1 { font-size: 2.6em; }
 h2 { font-size: 2.2em; }
 
 .tagline {
-	text-decoration: italic;
-	float: right;
-	display: block;
-	padding: 10px 20px 10px;
-	margin-right: -20px;
-	color: #c9c9c9;
-	// text-shadow: #454545 1px 1px 2px;
+  text-decoration: italic;
+  float: right;
+  display: block;
+  padding: 10px 20px 10px;
+  margin-right: -20px;
+  color: #c9c9c9;
+  // text-shadow: #454545 1px 1px 2px;
 }
 
 
 .center {
-	margin: 0 auto !important;
-	float: none !important;
+  margin: 0 auto !important;
+  float: none !important;
 }
 
 .main-search {
-	text-align: center;
-	padding: 30px 0;
-	.search-query {
-		
-	}
+  padding: 30px 0;
+  .search-query {
+    width: 100%;
+    padding: 0.5em 1.0em;
+    font-size: 2.0em;
+    // font-family: 'Cardo', serif !important;
+  }
+  .btn-primary {
+    font-size: 2.0em;
+  }
+}
+.search {
+  form {
+    max-width: auto;
+  }
+  .search-box {
+    position: relative;
+    .submit_icon {
+      position: absolute;
+      right: 0.6em;
+      font-size: 3.0em;
+      top: 0.1em;
+    }
+    .input-medium {
+      max-width: 120rem;
+    }
+  }
+}
+footer {
+  border-top: 1px solid #cecece;
 }
 
 .search-results .search .search-query {
-	width: 200px;
+  width: 200px;
+}
+
+// hack override ew
+@media screen and (min-width: 600px) {
+  form {
+    max-width: 120rem !important;
+  }
 }

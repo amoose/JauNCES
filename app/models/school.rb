@@ -52,15 +52,15 @@ class School
   end
 
   def self.generate_search_params(params)
-    if params[:name] && params[:name].is_number? && params[:name].length == 5
-      params[:zip] = params[:name].to_i 
+    if params[:query] && params[:query].is_number? && params[:query].length == 5
+      params[:zip] = params[:query].to_i 
       params.delete(:name)
     end
     valid_params = params.keys.collect(&:to_sym) & VALID_SEARCH_PARAMS
     query_params = {}
     valid_params.each { |p| query_params[p.to_sym] = params[p] }
     # [TODO] update method for string search on name from matching against only uppercase
-    query_params[:name] = /.*#{query_params[:name].upcase}.*/ if query_params[:name]
+    query_params[:query] = /.*#{query_params[:query].upcase}.*/ if query_params[:query]
     query_params
   end
 end

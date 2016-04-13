@@ -13,5 +13,10 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require vendor/jquery-1.11.3.min.js
+//= require components.js
 //= require_tree .
 
+$(function () {
+	$('input.search-query').focus();
+});

@@ -1,11 +1,21 @@
 div.search
-	h2
-		| Search for a school
+  h1
+    | Search for a school
 
-	form action="/search" method="GET" class="form-search"
-		input type="text" class="input-medium search-query input-xlarge" placeholder="Enter terms to search or a zip code" name="name" value="#{params[:name] || params[:zip]}"
-		button type="submit" class="btn btn-primary"
-			| Search
+  form#main_search action="/search" method="GET" class="form-search"
+    .search-box
+      input type="text" class="input-medium search-query input-xlarge" placeholder="Enter school name or zip code" name="query" value="#{params[:query] || params[:zip]}"
+      
+      a.submit_icon href="#"
+        span.glyphicon.glyphicon-search aria-hidden="false"
 
-	p
-		| Search by school name or zip
+      / hidden
+      button type="submit" class="btn btn-primary sr-only" style="visibility: hidden" Search
+
+javascript:
+  $(function() {
+    $('.submit_icon').click(function () {
+      $('#main_search').submit();
+      return false;
+    });
+  });
